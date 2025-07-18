@@ -20,11 +20,6 @@ class Database
                         $this->username,
                         $this->password
                     );
-            // $db = new PDO(
-            //     "mysql:host=127.0.0.1;port=8889;dbname=php_react_db",
-            //     $this->username,
-            //     $this->password
-            // );
 
             $db->exec("set names utf8");
             $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
