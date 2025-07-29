@@ -1,10 +1,25 @@
 <?php
 // autoloading classes
 require_once __DIR__.'/vendor/autoload.php';
-require_once __DIR__.'/src/config/__init.php';
-require_once __DIR__.'/src/routes/index.php';
+// require_once __DIR__.'/src/config/__init.php';
+// require_once __DIR__.'/src/routes/index.php';
 
-use App\Database\Database as DB;
+//fix cross origin blocked
+header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
+header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
+header('Content-Type: application/json');
+$method = $_SERVER['REQUEST_METHOD'];
+if ($method == "OPTIONS") {
+    header('Access-Control-Allow-Origin: *');
+    header("Access-Control-Allow-Headers: X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Request-Method,Access-Control-Request-Headers, Authorization");
+    header("HTTP/1.1 200 OK");
+    die();
+}
+
+
+
+// use App\Database\Database as DB;
 use App\Controllers\EventController as EventController;
 use App\Controllers\CategoryController as CategoryController;
 use App\Controllers\UserController as UserController;
