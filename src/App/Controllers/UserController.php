@@ -45,7 +45,7 @@ class UserController
                 'message'   => 'These credentials do not match any of our records.'
             ]);
         }else {
-            $this->model->auth($user, $login = true);
+            $user = $this->model->auth($user, true);
             unset($user['password']);
             echo json_encode([
                 'user'     => $user,
